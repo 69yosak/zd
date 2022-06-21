@@ -88,11 +88,9 @@ class HelloWorld
         string[] lines=File.ReadAllText("users.txt").Split('\n');
         int index=1;
         int Count=lines.Length-1;
-Console.WriteLine($"Count:{Count}");
         while(index<Count)
         {
             User newUser = new User();
-            Console.WriteLine($"'{lines[index+0]}'{lines[index+1]}'{lines[index+2]}'");
             newUser.login=lines[index+0];
             newUser.password=lines[index+1];
             newUser.balance=float.Parse(lines[index+2]);
