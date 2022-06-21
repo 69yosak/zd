@@ -144,7 +144,39 @@ class HelloWorld
         return ways;
         // void addWaypoint(string name,int time,int price,Dictionary<string,List<string>>place)
     }
-
+    public static saveWays()
+    {
+        if(!File.Exists("users.txt"))
+        {
+            File.Create("users.txt");
+        }
+        string data=$"{myWays}\n";
+        for(int wayID=0;wayID<myWays.Count;++wayID)
+        {
+            data+=$"{myWays[wayID].names.Count}";
+            foreach(string name in myWays[wayID].names)
+            {
+                data+=name+"\n";
+            }
+            foreach(int price in myWays[wayID].prices)
+            {
+                data+=$"{price}\n";
+            }
+            foreach(int time in myWays[wayID].times)
+            {
+                data+=$"{time}\n";
+            }
+            foreach(string typeSeat in typeSeats)
+            {
+                data+=$"{myWays[wayID].places[typeSeat].Count}\n";
+                foreach(string place in myWays[wayID].places[typeSeat])
+                {
+                data+=$"{place}\n";
+                }
+            }
+            
+        }
+    }
 
     static void Main()
     {
