@@ -75,7 +75,7 @@ class HelloWorld
         {
             data+=($"{users[i].toString()}\n");
         }
-        File.WriteAllText(data);
+        File.WriteAllText("users.txt",data);
     }
     static List<Way> generateWays()
     {
