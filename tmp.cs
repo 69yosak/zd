@@ -68,8 +68,9 @@ class HelloWorld
     public static void saveUsers()
     {
         if(!File.Exists("users.txt"))
-        File.Create("users.txt");
-  
+        {
+            File.Create("users.txt");
+        }
         string data=$"{users.Count}\n";
         for(int i=0;i<users.Count;++i)
         {
@@ -91,10 +92,12 @@ class HelloWorld
         while(index<Count)
         {
             User newUser = new User();
+            Console.WriteLine($"'{lines[index+1]}'{lines[index+2]}'{lines[index+3]}'");
             newUser.login=lines[index+1];
             newUser.password=lines[index+2];
             newUser.balance=float.Parse(lines[index+3]);
             users.Add(newUser);
+            index+=3;
         }
     }
     static List<Way> generateWays()
