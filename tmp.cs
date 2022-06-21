@@ -65,7 +65,7 @@ class HelloWorld
         }
         return places;
     }
-    public static saveUsers()
+    public static void saveUsers()
     {
         FileStream file=File.Create("users.txt");
         file.Write($"{users.Count}\n");
