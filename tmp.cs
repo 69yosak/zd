@@ -88,7 +88,7 @@ class HelloWorld
         string[] lines=File.ReadAllText("users.txt").Split('\n');
         int index=1;
         int Count=int.Parse(lines[0])-1;
-
+Console.WriteLine($"Count:{Count}");
         while(index<Count)
         {
             User newUser = new User();
