@@ -77,6 +77,27 @@ class HelloWorld
         }
         File.WriteAllText("users.txt",data);
     }
+    public static void loadUsers()
+    {
+        users=new List<User>();
+        if(!File.Exists("users.txt"))
+        {
+           
+            return;
+        }
+        List<string>lines=File.ReadAllText("users.txt").Split('\n');
+        int index=1;
+        int Count=int.Parse(lines[0])-1;
+
+        while(index<Count)
+        {
+            User newUser = new User();
+            newUser.login=lines[index+1];
+            newUser.password=lines[index+2];
+            newUser.balance=float.Parse(lines[index+3]);
+            users.Add(newUser);
+        }
+    }
     static List<Way> generateWays()
     {
         List<Way> ways = new List<Way>();
@@ -127,6 +148,7 @@ class HelloWorld
 
     static void Main()
     {
+        loadUsers();
         while (true)
         {
             Console.WriteLine("Привет, выбери роль");
