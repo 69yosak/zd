@@ -82,10 +82,9 @@ class HelloWorld
         users=new List<User>();
         if(!File.Exists("users.txt"))
         {
-           
             return;
         }
-        List<string>lines=File.ReadAllText("users.txt").Split('\n');
+        string[] lines=File.ReadAllText("users.txt").Split('\n');
         int index=1;
         int Count=int.Parse(lines[0])-1;
 
