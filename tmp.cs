@@ -67,13 +67,15 @@ class HelloWorld
     }
     public static void saveUsers()
     {
-        FileStream file=File.Create("users.txt");
-        Console.WriteLine("file created");
-        file.Write($"{users.Count}\n");
+        if(!File.Exists("users.txt"))
+        File.Create("users.txt");
+  
+        string data=$"{users.Count}\n";
         for(int i=0;i<users.Count;++i)
         {
-            file.Write($"{users[i].toString()}\n");
+            data=+($"{users[i].toString()}\n");
         }
+        File.WriteAllText(data);
     }
     static List<Way> generateWays()
     {
