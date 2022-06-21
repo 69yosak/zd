@@ -73,7 +73,7 @@ class HelloWorld
         string data=$"{users.Count}\n";
         for(int i=0;i<users.Count;++i)
         {
-            data=+($"{users[i].toString()}\n");
+            data+=($"{users[i].toString()}\n");
         }
         File.WriteAllText(data);
     }
