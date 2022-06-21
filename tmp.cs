@@ -461,7 +461,7 @@ class HelloWorld
                 myWays[wayId].places[i][typeSeats[typeSeat]][seatNum]=name+" "+surname;
             }
         }
-        Console.WriteLine("Хотите ли вы купить")
+        //Console.WriteLine("Хотите ли вы купить")
 
         
 
