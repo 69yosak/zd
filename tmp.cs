@@ -240,6 +240,7 @@ class HelloWorld
                         users.Add(newUser);
 
                         Console.WriteLine("Успешная регистрация");
+                        saveUsers();
                         return newUser.login;
                     }
                 }
