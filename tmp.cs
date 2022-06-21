@@ -174,7 +174,7 @@ class HelloWorld
 
 
             }
-            Console.Clear();
+            // Console.Clear();
         }
 
     }
