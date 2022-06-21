@@ -86,7 +86,7 @@ class HelloWorld
             return;
         }
         string[] lines=File.ReadAllText("users.txt").Split('\n');
-        int index=1;
+        int index=0;
         int Count=lines.Length;
 Console.WriteLine($"Count:{Count}");
         while(index<Count)
