@@ -1,11 +1,12 @@
 //Миша-молодец
 using System;
 using System.Collections.Generic;
-
+using System.Text;
+using System.IO;
 
 public class Way
 {
-    public List<string> names = new List<string>();
+    public List<string> names = new List<string>(с;
     public List<int> times = new List<int>();
     public List<int> prices = new List<int>();
 
@@ -24,7 +25,10 @@ public class User
     public string login="";
     public string password="";
     public float balance=0;
-
+    public string toString()
+    {
+        return $"{login}\n{password}\n{balance}";
+    }
 }
 class HelloWorld
 {
@@ -61,6 +65,15 @@ class HelloWorld
             places[typeSeats[3]].Add("");
         }
         return places;
+    }
+    public static saveUsers()
+    {
+        FileStream file=File.Create("users.txt");
+        file.Write($"{users.Count}\n");
+        for(int i=0;i<users.Count;++i)
+        {
+            file.Write($"{users[i].toString()}\n");
+        }
     }
     static List<Way> generateWays()
     {
