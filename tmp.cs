@@ -86,16 +86,16 @@ class HelloWorld
             return;
         }
         string[] lines=File.ReadAllText("users.txt").Split('\n');
-        int index=0;
-        int Count=lines.Length-1;
+        int index=1;
+        int Count=lines.Length;
 Console.WriteLine($"Count:{Count}");
         while(index<Count)
         {
             User newUser = new User();
-            Console.WriteLine($"'{lines[index+1]}'{lines[index+2]}'{lines[index+3]}'");
-            newUser.login=lines[index+1];
-            newUser.password=lines[index+2];
-            newUser.balance=float.Parse(lines[index+3]);
+            Console.WriteLine($"'{lines[index+0]}'{lines[index+1]}'{lines[index+2]}'");
+            newUser.login=lines[index+0];
+            newUser.password=lines[index+1];
+            newUser.balance=float.Parse(lines[index+2]);
             users.Add(newUser);
             index+=3;
         }
