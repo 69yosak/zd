@@ -68,6 +68,7 @@ class HelloWorld
     public static void saveUsers()
     {
         FileStream file=File.Create("users.txt");
+        Console.WriteLine("file created");
         file.Write($"{users.Count}\n");
         for(int i=0;i<users.Count;++i)
         {
