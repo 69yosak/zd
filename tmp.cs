@@ -6,7 +6,7 @@ using System.IO;
 
 public class Way
 {
-    public List<string> names = new List<string>(с;
+    public List<string> names = new List<string>();
     public List<int> times = new List<int>();
     public List<int> prices = new List<int>();
 
