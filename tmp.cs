@@ -227,7 +227,8 @@ class HelloWorld
     static void Main()
     {
         loadUsers();
-        saveWays();
+        loadWays();
+        // saveWays();
         while (true)
         {
             Console.WriteLine("Привет, выбери роль");
