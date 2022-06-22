@@ -659,7 +659,16 @@ class HelloWorld
                         break;
                     }
                 }
-                float cashBack=getCashBack(login);
+                
+                
+                break;
+            }
+            default:
+            {
+                Console.WriteLine("хорошо");
+                break;
+            }
+            float cashBack=getCashBack(login);
                 if(cashBack>0)
                 {
                     Console.WriteLine($"У вас есть {cashBack} баллов. Списать?");
@@ -689,14 +698,6 @@ class HelloWorld
                 Console.WriteLine($"Вы потратили {priceTrip} рублей, у вас есть {cashBack} баллов");
                 saveUsers();
                 saveWays();
-                
-                break;
-            }
-            default:
-            {
-                Console.WriteLine("хорошо");
-                break;
-            }
         }
 
         
