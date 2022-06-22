@@ -613,7 +613,7 @@ class HelloWorld
             for(int j=wayPoint1;j<wayPoint2;++j)
             {
                 myWays[wayId].places[j][typeSeats[typeSeat]][seatNum]=name+" "+surname;
-                priceTrip+=myWays[wayId].prices[j];
+                priceTrip+=myWays[wayId].prices[j+1];
             }
             //Console.WriteLine($"");
         }
