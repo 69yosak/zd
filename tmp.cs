@@ -153,7 +153,7 @@ class HelloWorld
         string data=$"{myWays.Count}\n";
         for(int wayID=0;wayID<myWays.Count;++wayID)
         {
-            data+=$"{myWays[wayID].names.Count}";
+            data+=$"{myWays[wayID].names.Count}\n";
             foreach(string name in myWays[wayID].names)
             {
                 data+=name+"\n";
