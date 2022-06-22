@@ -232,7 +232,7 @@ class HelloWorld
     {
         loadUsers();
         loadWays();
-        showWays();
+        //showWays();
         // saveWays();
         while (true)
         {
@@ -520,7 +520,7 @@ class HelloWorld
     }
     static void buyTicket()
     {
-        // showWays();
+        showWays();
         Console.WriteLine("Введите номер маршрута");
 
         int wayId = int.Parse(Console.ReadLine()) - 1;
