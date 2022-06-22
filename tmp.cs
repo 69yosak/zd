@@ -244,7 +244,7 @@ class HelloWorld
                 case "1":
                     {
                         Console.WriteLine("Введите пароль админитратора(12345)");
-                        if (Console.ReadLine() == "12345") doLikeAdmin();
+                        if (Console.ReadLine() == "12345") while(true) doLikeAdmin();
                         break;
                     }
                 case "2":
@@ -382,29 +382,32 @@ class HelloWorld
             return;
         }
         Console.WriteLine("вы залогинились как Клиент");
-        printClientMenu();
-        switch (Console.ReadLine())
+        while(true)
         {
-            case "1":
+            printClientMenu();
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    {
+                        showWays();
+                        break;
+                    }
+                case "2":
+                    {
+                        buyTicket(login);
+                        break;
+                    }
+                case "3":
                 {
-                    showWays();
+                    Console.WriteLine("Личный кабинет в разработке");
                     break;
                 }
-            case "2":
-                {
-                    buyTicket(login);
-                    break;
-                }
-            //   case "3":
-            //   {
-
-            //     break;
-            //   }
-            default:
-                {
-
-                    break;
-                }
+                default:
+                    {
+                        return;
+                        break;
+                    }
+            }
         }
 
     }
