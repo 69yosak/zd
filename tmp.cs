@@ -238,8 +238,6 @@ class HelloWorld
     }
     static void Main()
     {   
-        myWays=generateWays();
-        saveWays();
 
 
         loadUsers();
