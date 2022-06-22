@@ -597,13 +597,18 @@ class HelloWorld
             Console.WriteLine($"{i+1}) {typeSeats[i]}(Свободно{countPlacesMayBuy(myWays[wayId],i,wayPoint1,wayPoint2)})");
         }
         int typeSeat=int.Parse(Console.ReadLine())-1;
-        if(typeSeat<0 || typeSeat >= typeSeats.Count || countPlacesMayBuy(myWays[wayId],typeSeat,wayPoint1,wayPoint2))
+        if(typeSeat<0 || typeSeat >= typeSeats.Count || countPlacesMayBuy(myWays[wayId],typeSeat,wayPoint1,wayPoint2)==0)
         {
             Console.WriteLine("Неправильный тип мест");
             return;
         }
         Console.WriteLine("Введите количество билетов");
         int countPlaces = int.Parse(Console.ReadLine());
+        if(countPlacesMayBuy(myWays[wayId],typeSeat,wayPoint1,wayPoint2)<countPlaces)
+        {
+            Console.WriteLine("Столько мест нет");
+            return;
+        }
         float priceTrip=0;
         for(int i=0;i<countPlaces;++i)
         {
