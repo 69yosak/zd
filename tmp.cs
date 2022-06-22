@@ -33,7 +33,7 @@ class HelloWorld
 {
     public static List<Way> myWays = generateWays();
     public static List<User> users = new List<User>();
-    static List<string> typeSeats = new List<string>() { "seats", "plats", "coupe", "luxe" };
+    static List<string> typeSeats = new List<string>() { "Сидячие", "Плацкарт", "Купе", "Люкс" };
     static Dictionary<string, List<string>> generatePlace(int countSeats, int countPlats, int countCoupe, int countLuxe)
     {
         typeSeats = new List<string>() { "seats", "plats", "coupe", "luxe" };
@@ -495,6 +495,7 @@ class HelloWorld
             Console.Write(MainList[i] == "+" ? (i + 1 > 9 ? ($"{i + 1}") : ($" {i + 1}")) : "  ");
             
         }
+        Console.Write("\n");
 
     }
     static bool checkPlaces(Way way,int typeSeat, int i0, int i1,int numSeat)
@@ -608,7 +609,7 @@ class HelloWorld
                         break;
                     }
                 }
-                Console.WriteLine("Хотите ли вы заказать транфер до аэропорта?");
+                Console.WriteLine("Хотите ли вы заказать трансфер до вокзала?");
                 Console.WriteLine("1)Да");
                 Console.WriteLine("2)Нет");
                 switch(Console.ReadLine())
