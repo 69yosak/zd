@@ -188,6 +188,7 @@ class HelloWorld
             myWays=generateWays();
             return;
         }
+        myWays=new List<Way>();
         string[] lines=File.ReadAllText("ways.txt").Split('\n');
         int countWays=int.Parse(lines[0]);
         int index=1;
@@ -220,8 +221,11 @@ class HelloWorld
                     {
                         tmpList.Add(lines[index]);index++;
                     }
+                    tmpPlace.Add(typeSeat,tmpList);
                 }
+                newWay.places.Add(tmpPlace);
             }
+            myWays.Add(newWay);
         }
     }
     static void Main()
