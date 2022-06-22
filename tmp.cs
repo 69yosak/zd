@@ -244,7 +244,7 @@ class HelloWorld
                 case "1":
                     {
                         Console.WriteLine("Введите пароль админитратора(12345)");
-                        if (Console.ReadLine() == "12345") while(true) doLikeAdmin();
+                        if (Console.ReadLine() == "12345") while( doLikeAdmin()){};
                         break;
                     }
                 case "2":
@@ -268,14 +268,16 @@ class HelloWorld
     {
         Console.WriteLine("1)Добавить маршрут");
         Console.WriteLine("2)Удалить маршрут");
+        Console.WriteLine("3)Выйти из аккаунта");
     }
     public static void printClientMenu()
     {
         Console.WriteLine("1)Посмотреть маршруты");
         Console.WriteLine("2)Купить билет(ы)");
         Console.WriteLine("3)Coming soon");
+        Console.WriteLine("4)Выйти из аккаунта");
     }
-    public static void doLikeAdmin()
+    public static bool doLikeAdmin()
     {
         Console.WriteLine("вы вошли как Админ");
         printAminMenu();
@@ -291,12 +293,18 @@ class HelloWorld
                     adminEraseWay();
                     break;
                 }
+            case "3":
+                {
+                    return false;
+                    break;
+                }
             default:
                 {
 
                     break;
                 }
         }
+        return true;
 
     }
     public static bool checkLogin(string login)
@@ -400,6 +408,11 @@ class HelloWorld
                 case "3":
                 {
                     Console.WriteLine("Личный кабинет в разработке");
+                    break;
+                }
+                case "4":
+                {
+                    return;
                     break;
                 }
                 default:
