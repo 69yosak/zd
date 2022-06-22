@@ -146,9 +146,9 @@ class HelloWorld
     }
     public static saveWays()
     {
-        if(!File.Exists("users.txt"))
+        if(!File.Exists("ways.txt"))
         {
-            File.Create("users.txt");
+            File.Create("ways.txt");
         }
         string data=$"{myWays}\n";
         for(int wayID=0;wayID<myWays.Count;++wayID)
@@ -166,18 +166,62 @@ class HelloWorld
             {
                 data+=$"{time}\n";
             }
-            foreach(string typeSeat in typeSeats)
+            for (int tmp=0;tmp<myWays[wayID].places.Count;++tmp)
             {
-                data+=$"{myWays[wayID].places[typeSeat].Count}\n";
-                foreach(string place in myWays[wayID].places[typeSeat])
+                foreach(string typeSeat in typeSeats)
                 {
-                data+=$"{place}\n";
+                    data+=$"{myWays[wayID].places[tmp][typeSeat].Count}\n";
+                    foreach(string place in myWays[wayID].places[tmp][typeSeat])
+                    {
+                        data+=$"{place}\n";
+                    }
                 }
             }
-            
         }
     }
+    public static void loadWays()
+    {
+        if(!File.Exists("users.txt"))
+        {
+            myWays=generateWays();
+            return;
+        }
+        string[] lines=File.ReadAllText("ways.txt").Split('\n');
+        int countWays=int.Parse(lines[0]);
+        int index=1;
+        for(int numWay=0;numWay<countWays;++numWay)
+        {
+            Way newWay=new Way();
+            int CountWayPoints=int.Parse(lines[index]);index++;
+            for(int i=0;i<CountWayPoints;++i)
+            {
+                newWay.names.Add(lines[index]);index++;
+            }
+            for(int i=0;i<CountWayPoints;++i)
+            {
+                newWay.prices.Add(int.Parse(lines[index]));index++;
+            }
+            for(int i=0;i<CountWayPoints;++i)
+            {
+                newWay.times.Add(int.Parse(lines[index]));index++;
+            }
+            
 
+            for(int i=0;i<CountWayPoints;++i)
+            {
+                Dictionary<string,List<string>> tmpPlace = new Dictionary<string, List<string>>();
+                foreach(string typeSeat in typeSeats)
+                {
+                    int Count = int.Parse(lines[index]);index++;
+                    List<string> tmpList=new List<string>();
+                    for(int j =0;j<Count;++j)
+                    {
+                        tmpList.Add(lines[index]);index++;
+                    }
+                }
+            }
+        }
+    }
     static void Main()
     {
         loadUsers();
@@ -518,7 +562,52 @@ class HelloWorld
                 myWays[wayId].places[i][typeSeats[typeSeat]][seatNum]=name+" "+surname;
             }
         }
-        //Console.WriteLine("Хотите ли вы купить")
+        Console.WriteLine("Хотите ли вы доп. услуги?");
+        Console.WriteLine("1)Да");
+        Console.WriteLine("2)Нет");
+
+        switch(Console.ReadLine())
+        {
+            case "1":
+            {
+                Console.WriteLine("Хотите ли вы заказать питание?");
+                Console.WriteLine("1)Да");
+                Console.WriteLine("2)Нет");
+                switch(Console.ReadLine())
+                {
+                    case 1:
+                    {
+                        
+                        Console.WriteLine("Еда заказана");
+                    }
+                    default:
+                    {
+                        Console.WriteLine("Хорошо");
+                    }
+                }
+                Console.WriteLine("Хотите ли вы заказать транфер до аэропорта?");
+                Console.WriteLine("1)Да");
+                Console.WriteLine("2)Нет");
+                switch(Console.ReadLine())
+                {
+                    case 1:
+                    {
+                        
+                        Console.WriteLine("Трансфер заказан");
+                    }
+                    default:
+                    {
+                        Console.WriteLine("Хорошо");
+                    }
+                }
+                
+            }
+            default:
+            {
+                Console.WriteLine("хорошо");
+                break;
+            }
+        }
 
         
 
