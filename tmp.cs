@@ -228,6 +228,7 @@ class HelloWorld
     {
         loadUsers();
         loadWays();
+        showWays();
         // saveWays();
         while (true)
         {
