@@ -597,7 +597,7 @@ class HelloWorld
             Console.WriteLine($"{i+1}) {typeSeats[i]}(Свободно{countPlacesMayBuy(myWays[wayId],i,wayPoint1,wayPoint2)})");
         }
         int typeSeat=int.Parse(Console.ReadLine())-1;
-        if(typeSeat<0 || typeSeat >= typeSeats.Count)
+        if(typeSeat<0 || typeSeat >= typeSeats.Count || countPlacesMayBuy(myWays[wayId],typeSeat,wayPoint1,wayPoint2))
         {
             Console.WriteLine("Неправильный тип мест");
             return;
