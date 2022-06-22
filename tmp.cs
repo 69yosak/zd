@@ -499,6 +499,15 @@ class HelloWorld
         Console.Write("\n");
 
     }
+    static int countPlacesMayBuy(Way way,int typeSeat, int i0, int i1)
+    {
+        int answer=0;
+        int countSeats=way.places[0][typeSeats[typeSeat]].Count;
+        for(int i=0;i<countSeats;++i)
+        {
+            answer+= checkPlaces(way,typeSeat, i0,i1,i) ? 1 : 0 ;
+        }
+    }
     static bool checkPlaces(Way way,int typeSeat, int i0, int i1,int numSeat)
     {
         List <string> MainList=new List<string>();
@@ -584,7 +593,7 @@ class HelloWorld
         Console.WriteLine("Введите тип мест");
         for(int i=0;i<typeSeats.Count;++i)
         {
-            Console.WriteLine($"{i+1}) {typeSeats[i]}");
+            Console.WriteLine($"{i+1}) {typeSeats[i]}(Свободно{countPlacesMayBuy(myWays[wayId],typeSeats[i],wayPoint1,wayPoint2)})");
         }
         int typeSeat=int.Parse(Console.ReadLine())-1;
         if(typeSeat<0 || typeSeat >= typeSeats.Count)
