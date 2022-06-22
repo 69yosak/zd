@@ -416,7 +416,7 @@ class HelloWorld
         Way newWay = new Way();
         Console.WriteLine("Введите количество станций");
         int CountWayPoints=int.Parse(Console.ReadLine());
-        if(CountWayPoints<1)Console.WriteLine("Неправильное количество станций. Должно быть >1");
+        if(CountWayPoints<1){Console.WriteLine("Неправильное количество станций. Должно быть >1");return;}
         Console.WriteLine("Введите количество сидячих мест");
         int CountSeatsSeats=int.Parse(Console.ReadLine());
         Console.WriteLine("Введите количество плацкартных мест");
