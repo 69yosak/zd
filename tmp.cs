@@ -577,12 +577,12 @@ class HelloWorld
             Console.WriteLine("Введите фамилию пассажира");
             string surname=Console.ReadLine();
             int priceTrip=0;
-            for(i=wayPoint1;i<wayPoint2;++i)
+            for(int j=wayPoint1;j<wayPoint2;++j)
             {
-                myWays[wayId].places[i][typeSeats[typeSeat]][seatNum]=name+" "+surname;
-                priceTrip+=myWays[wayId].prices[i];
+                myWays[wayId].places[j`][typeSeats[typeSeat]][seatNum]=name+" "+surname;
+                priceTrip+=myWays[wayId].prices[j];
             }
-            Console.WriteLine($"");
+            //Console.WriteLine($"");
         }
         Console.WriteLine("Хотите ли вы доп. услуги?");
         Console.WriteLine("1)Да");
