@@ -432,19 +432,19 @@ class HelloWorld
         if(CountWayPoints<2){Console.WriteLine("Неправильное количество станций. Должно быть >1");return;}
         Console.WriteLine("Введите количество сидячих мест");
         int CountSeatsSeats=int.Parse(Console.ReadLine());
-        Console.WriteLine("Введите количество плацкартных мест");
+        Console.WriteLine("Введите количество плацкарт-мест");
         int CountPlatsSeats=int.Parse(Console.ReadLine());
-        Console.WriteLine("Введите количество купешных мест");
+        Console.WriteLine("Введите количество купе-мест");
         int CountCoupeSeats=int.Parse(Console.ReadLine());
-        Console.WriteLine("Введите количество люксовых мест");
+        Console.WriteLine("Введите количество люкс-мест");
         int CountLuxeSeats=int.Parse(Console.ReadLine());
         for (int i=0;i<CountWayPoints;++i)
         {
             Console.WriteLine("Введите название станции");
             string name = Console.ReadLine();
-            Console.WriteLine("Введите стоимость проезда от предыдущей станции");
+            Console.WriteLine("Введите стоимость билета до следующей станции");
             int price=int.Parse(Console.ReadLine());
-            Console.WriteLine("Введите длительность проезда (в минутах) от предыдущей станции");
+            Console.WriteLine("Введите длительность пути (в минутах) от предыдущей станции");
             int time=int.Parse(Console.ReadLine());
             newWay.addWaypoint(name,time,price,generatePlace(CountSeatsSeats,CountPlatsSeats,CountCoupeSeats,CountLuxeSeats));
 
@@ -612,13 +612,44 @@ class HelloWorld
         Console.WriteLine("Введите тип мест");
         for(int i=0;i<typeSeats.Count;++i)
         {
-            Console.WriteLine($"{i+1}) {typeSeats[i]}(Свободно{countPlacesMayBuy(myWays[wayId],i,wayPoint1,wayPoint2)})");
+            Console.WriteLine($"{i+1}) {typeSeats[i]}(Свободно: {countPlacesMayBuy(myWays[wayId],i,wayPoint1,wayPoint2)})");
         }
         int typeSeat=int.Parse(Console.ReadLine())-1;
-        if(typeSeat<0 || typeSeat >= typeSeats.Count || countPlacesMayBuy(myWays[wayId],typeSeat,wayPoint1,wayPoint2)==0)
+        if(typeSeat<0 || typeSeat >= typeSeats.Count)
         {
             Console.WriteLine("Неправильный тип мест");
             return;
+        }
+        if(countPlacesMayBuy(myWays[wayId],typeSeat,wayPoint1,wayPoint2)==0)
+        {
+            bool cond=false;
+            int tmpWayPoint=-1;
+            for(tmpWayPoint=wayPoint1+1;tmpWayPoint<wayPoint2;++tmpWayPoint)
+            {
+                if(countPlacesMayBuy(myWays[wayId],typeSeat,wayPoint1,wayPoint2)!=0)
+                {
+                    cond=true;
+                }
+            }
+            if(cond)
+            {
+                Console.WriteLine("Есть Альтернатива");
+                Console.WriteLine("1)Посмотреть");
+                Console.WriteLine("2)Не интересно");
+
+                switch(Console.ReadLine())
+                {
+                    case "1":
+                    {
+
+                    }
+                    default:
+                    {
+                        Console.WriteLine("Хорошо");
+                        break;
+                    }
+                }
+            }
         }
         Console.WriteLine("Введите количество билетов");
         int countPlaces = int.Parse(Console.ReadLine());
