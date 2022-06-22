@@ -237,11 +237,14 @@ class HelloWorld
         }
     }
     static void Main()
-    {
+    {   
+        myWays=generateWays();
+        saveWays();
+
+
         loadUsers();
         loadWays();
         //showWays();
-        // saveWays();
         while (true)
         {
             Console.WriteLine("Привет, выбери роль");
