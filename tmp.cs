@@ -621,7 +621,7 @@ class HelloWorld
                 {
                     case "1":
                     {
-                        priceTrip+=2000ж
+                        priceTrip+=2000;
                         Console.WriteLine("Еда заказана");
                         break;
                     }
