@@ -184,7 +184,7 @@ class HelloWorld
     }
     public static void loadWays()
     {
-        if(!File.Exists("users.txt"))
+        if(!File.Exists("ways.txt"))
         {
             myWays=generateWays();
             saveWays();
