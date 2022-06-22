@@ -440,7 +440,7 @@ class HelloWorld
     {
         showWays();
         Console.WriteLine("Введите номер маршрута для удаления");
-        int wayID = int.Parse(Console.ReadLine());
+        int wayID = int.Parse(Console.ReadLine())-1;
         Console.WriteLine($"Вы Написали {wayID}");
         if(wayID<1||wayID>myWays.Count)
         {
