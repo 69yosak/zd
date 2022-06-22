@@ -507,6 +507,7 @@ class HelloWorld
         {
             answer+= checkPlaces(way,typeSeat, i0,i1,i) ? 1 : 0 ;
         }
+        return answer;
     }
     static bool checkPlaces(Way way,int typeSeat, int i0, int i1,int numSeat)
     {
