@@ -585,10 +585,12 @@ class HelloWorld
                     {
                         
                         Console.WriteLine("Еда заказана");
+                        break;
                     }
                     default:
                     {
                         Console.WriteLine("Хорошо");
+                        break;
                     }
                 }
                 Console.WriteLine("Хотите ли вы заказать транфер до аэропорта?");
@@ -600,13 +602,16 @@ class HelloWorld
                     {
                         
                         Console.WriteLine("Трансфер заказан");
+                        break;
                     }
                     default:
                     {
                         Console.WriteLine("Хорошо");
+                        break;
                     }
                 }
                 
+                break;
             }
             default:
             {
