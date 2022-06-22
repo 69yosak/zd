@@ -274,8 +274,8 @@ class HelloWorld
     {
         Console.WriteLine("1)Посмотреть маршруты");
         Console.WriteLine("2)Купить билет(ы)");
-        Console.WriteLine("3)Coming soon");
-        Console.WriteLine("4)Выйти из аккаунта");
+        //Console.WriteLine("3)");
+        Console.WriteLine("3)Выйти из аккаунта");
     }
     public static bool doLikeAdmin()
     {
@@ -406,12 +406,12 @@ class HelloWorld
                         buyTicket(login);
                         break;
                     }
-                case "3":
+                    case "4":
                 {
                     Console.WriteLine("Личный кабинет в разработке");
                     break;
                 }
-                case "4":
+                case "3":
                 {
                     return;
                     break;
