@@ -698,7 +698,7 @@ class HelloWorld
                 }
                 setCashBack(login,cashBack);
                 giveCashBack(login,priceTrip*(float)0.1);
-                Console.WriteLine($"Вы потратили {priceTrip} рублей, у вас есть {cashBack} баллов");
+                Console.WriteLine($"Вы потратили {priceTrip} рублей, у вас есть {getCashBack(login)} баллов");
                 saveUsers();
                 saveWays();
 
