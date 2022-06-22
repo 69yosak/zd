@@ -332,6 +332,7 @@ class HelloWorld
     }
     public static string ClientRegistr()
     {
+        Console.WriteLine("Выберите тип авторизации");
         Console.WriteLine("1)Регистрация");
         Console.WriteLine("2)Вход");
         switch(Console.ReadLine())
