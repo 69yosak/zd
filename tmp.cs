@@ -493,7 +493,7 @@ class HelloWorld
         for(int i=0;i<MainList.Count;++i)
         {
             Console.Write(MainList[i] == "+" ? (i + 1 > 9 ? ($"{i + 1}") : ($" {i + 1}")) : "  ");
-            
+            Console.Write(" ");
         }
         Console.Write("\n");
 
