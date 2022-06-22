@@ -444,7 +444,7 @@ class HelloWorld
     static void adminEraseWay()
     {
         showWays();
-        Console.WriteLine("Введите номер маршрута для удаления");
+        Console.WriteLine("Введите номер маршрута для удаления или -1 для выхода");
         int wayID = int.Parse(Console.ReadLine())-1;
         Console.WriteLine($"Вы Написали {wayID+1}");
         if(wayID<0||wayID>=myWays.Count)
