@@ -448,7 +448,7 @@ class HelloWorld
             Console.WriteLine();
         }
         myWays.RemoveAt(wayID);
-        
+        saveWays();
     }
 
     static void showWays()
@@ -625,6 +625,8 @@ class HelloWorld
                         break;
                     }
                 }
+                saveUsers();
+                saveWays();
                 
                 break;
             }
