@@ -594,7 +594,7 @@ class HelloWorld
         Console.WriteLine("Введите тип мест");
         for(int i=0;i<typeSeats.Count;++i)
         {
-            Console.WriteLine($"{i+1}) {typeSeats[i]}(Свободно{countPlacesMayBuy(myWays[wayId],typeSeats[i],wayPoint1,wayPoint2)})");
+            Console.WriteLine($"{i+1}) {typeSeats[i]}(Свободно{countPlacesMayBuy(myWays[wayId],i,wayPoint1,wayPoint2)})");
         }
         int typeSeat=int.Parse(Console.ReadLine())-1;
         if(typeSeat<0 || typeSeat >= typeSeats.Count)
