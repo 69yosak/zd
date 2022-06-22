@@ -376,7 +376,8 @@ class HelloWorld
     }
     public static void doLikeCLient()
     {
-        if(ClientRegistr()=="")
+        string login=ClientRegistr();
+        if(login=="")
         {
             return;
         }
@@ -391,7 +392,7 @@ class HelloWorld
                 }
             case "2":
                 {
-                    buyTicket();
+                    buyTicket(login);
                     break;
                 }
             //   case "3":
@@ -541,7 +542,17 @@ class HelloWorld
         }
         return answer;
     }
-    static void buyTicket()
+    static void setCashBack(string login,float summ)
+    {
+        foreach(User user in users)
+        {
+            if(user.login==login)
+            {
+                user.balance=summ;
+            }
+        }
+    }
+    static void buyTicket(string login)
     {
         showWays();
         Console.WriteLine("Введите номер маршрута");
@@ -583,7 +594,7 @@ class HelloWorld
         }
         Console.WriteLine("Введите количество билетов");
         int countPlaces = int.Parse(Console.ReadLine());
-        int priceTrip=0;
+        float priceTrip=0;
         for(int i=0;i<countPlaces;++i)
         {
             Console.WriteLine("Выбирете место");
@@ -648,7 +659,34 @@ class HelloWorld
                         break;
                     }
                 }
-                // Console.WriteLine
+                float cashBack=getCashBack(login);
+                if(cashBack>0)
+                {
+                    Console.WriteLine($"У вас есть {cashBack} баллов. Списать?");
+                    Console.WriteLine("1)Да");
+                    Console.WriteLine("2)Нет");
+
+                    switch(Console.ReadLine())
+                    {
+                        case "1":
+                        {
+                            if(cashBack < priceTrip)
+                            {
+                                cashBack=0;
+                                priceTrip-=cashBack;
+                            }
+                            else
+                            {
+                                cashBack-=priceTrip;
+                                priceTrip=0;
+                            }
+                            break;
+                        }
+                    }
+                }
+                setCashBack(login,cashBack);
+                giveCashBack(login,priceTrip*0.1);
+                Console.WriteLine($"Вы потратили {priceTrip} рублей, у вас есть {cashBack} баллов");
                 saveUsers();
                 saveWays();
                 
