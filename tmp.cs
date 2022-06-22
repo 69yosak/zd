@@ -145,7 +145,7 @@ class HelloWorld
         return ways;
         // void addWaypoint(string name,int time,int price,Dictionary<string,List<string>>place)
     }
-    public static createFile(string name)
+    public static void createFile(string name)
     { if(!File.Exists("ways.txt"))
         {
         
