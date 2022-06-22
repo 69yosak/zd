@@ -147,9 +147,13 @@ class HelloWorld
     }
     public static void saveWays()
     {
+        if(true)
+        {
         if(!File.Exists("ways.txt"))
         {
             File.Create("ways.txt");
+        }
+
         }
         string data=$"{myWays.Count}\n";
         for(int wayID=0;wayID<myWays.Count;++wayID)
