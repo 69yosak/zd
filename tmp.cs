@@ -145,16 +145,18 @@ class HelloWorld
         return ways;
         // void addWaypoint(string name,int time,int price,Dictionary<string,List<string>>place)
     }
+    public static createFile(string name)
+    { if(!File.Exists("ways.txt"))
+        {
+        
+        File.Create(name);}
+    }
     public static void saveWays()
     {
-        if(true)
-        {
-        if(!File.Exists("ways.txt"))
-        {
-            File.Create("ways.txt");
-        }
+       
 
-        }
+            createFile("ways.txt");
+        
         string data=$"{myWays.Count}\n";
         for(int wayID=0;wayID<myWays.Count;++wayID)
         {
