@@ -451,6 +451,7 @@ class HelloWorld
         {
             Console.WriteLine($"Не правильный номер маршрута{1}-{myWays.Count}");
             Console.WriteLine();
+            return;
         }
         myWays.RemoveAt(wayID);
         saveWays();
