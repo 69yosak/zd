@@ -277,7 +277,7 @@ class HelloWorld
     }
     public static void doLikeAdmin()
     {
-        Console.WriteLine("вы залогинились как Админ");
+        Console.WriteLine("вы вошли как Админ");
         printAminMenu();
         switch (Console.ReadLine())
         {
@@ -416,6 +416,7 @@ class HelloWorld
         Way newWay = new Way();
         Console.WriteLine("Введите количество станций");
         int CountWayPoints=int.Parse(Console.ReadLine());
+        if(CountWayPoints<1)Console.WriteLine("Неправильное количество станций. Должно быть >1");
         Console.WriteLine("Введите количество сидячих мест");
         int CountSeatsSeats=int.Parse(Console.ReadLine());
         Console.WriteLine("Введите количество плацкартных мест");
