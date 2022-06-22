@@ -144,7 +144,7 @@ class HelloWorld
         return ways;
         // void addWaypoint(string name,int time,int price,Dictionary<string,List<string>>place)
     }
-    public static saveWays()
+    public static void saveWays()
     {
         if(!File.Exists("ways.txt"))
         {
@@ -225,6 +225,7 @@ class HelloWorld
     static void Main()
     {
         loadUsers();
+        saveWays();
         while (true)
         {
             Console.WriteLine("Привет, выбери роль");
@@ -557,10 +558,13 @@ class HelloWorld
             string name=Console.ReadLine();
             Console.WriteLine("Введите фамилию пассажира");
             string surname=Console.ReadLine();
+            int priceTrip=0;
             for(i=wayPoint1;i<wayPoint2;++i)
             {
                 myWays[wayId].places[i][typeSeats[typeSeat]][seatNum]=name+" "+surname;
+                priceTrip+=myWays[wayId].prices[i];
             }
+            Console.WriteLine($"");
         }
         Console.WriteLine("Хотите ли вы доп. услуги?");
         Console.WriteLine("1)Да");
