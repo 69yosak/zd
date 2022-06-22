@@ -441,7 +441,7 @@ class HelloWorld
         showWays();
         Console.WriteLine("Введите номер маршрута для удаления");
         int wayID = int.Parse(Console.ReadLine())-1;
-        Console.WriteLine($"Вы Написали {wayID}");
+        Console.WriteLine($"Вы Написали {wayID+1}");
         if(wayID<1||wayID>myWays.Count)
         {
             Console.WriteLine($"Не правильный номер маршрута{1}-{myWays.Count}");
