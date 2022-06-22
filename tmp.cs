@@ -581,7 +581,7 @@ class HelloWorld
                 Console.WriteLine("2)Нет");
                 switch(Console.ReadLine())
                 {
-                    case 1:
+                    case "1":
                     {
                         
                         Console.WriteLine("Еда заказана");
@@ -598,7 +598,7 @@ class HelloWorld
                 Console.WriteLine("2)Нет");
                 switch(Console.ReadLine())
                 {
-                    case 1:
+                    case "1":
                     {
                         
                         Console.WriteLine("Трансфер заказан");
