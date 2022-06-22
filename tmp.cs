@@ -519,6 +519,28 @@ class HelloWorld
         return (MainList[numSeat]=="+");
 
     }
+    static void giveCashBack(string login,float summ)
+    {
+        foreach(User user in users)
+        {
+            if(user.login==login)
+            {
+                user.balance+=summ;
+            }
+        }
+    }
+    static float getCashBack(string login)
+    {
+        float answer=0;
+        foreach(User user in users)
+        {
+            if(user.login==login)
+            {
+                answer=user.balance;
+            }
+        }
+        return answer;
+    }
     static void buyTicket()
     {
         showWays();
@@ -561,6 +583,7 @@ class HelloWorld
         }
         Console.WriteLine("Введите количество билетов");
         int countPlaces = int.Parse(Console.ReadLine());
+        int priceTrip=0;
         for(int i=0;i<countPlaces;++i)
         {
             Console.WriteLine("Выбирете место");
@@ -576,7 +599,6 @@ class HelloWorld
             string name=Console.ReadLine();
             Console.WriteLine("Введите фамилию пассажира");
             string surname=Console.ReadLine();
-            int priceTrip=0;
             for(int j=wayPoint1;j<wayPoint2;++j)
             {
                 myWays[wayId].places[j][typeSeats[typeSeat]][seatNum]=name+" "+surname;
@@ -599,7 +621,7 @@ class HelloWorld
                 {
                     case "1":
                     {
-                        
+                        priceTrip+=2000ж
                         Console.WriteLine("Еда заказана");
                         break;
                     }
@@ -616,7 +638,7 @@ class HelloWorld
                 {
                     case "1":
                     {
-                        
+                        priceTrip+=3000;
                         Console.WriteLine("Трансфер заказан");
                         break;
                     }
@@ -626,6 +648,7 @@ class HelloWorld
                         break;
                     }
                 }
+                // Console.WriteLine
                 saveUsers();
                 saveWays();
                 
