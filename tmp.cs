@@ -177,6 +177,8 @@ class HelloWorld
                     }
                 }
             }
+
+        File.WriteAllText("ways.txt",data);
         }
     }
     public static void loadWays()
