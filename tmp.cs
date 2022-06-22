@@ -70,6 +70,7 @@ class HelloWorld
         if(!File.Exists("users.txt"))
         {
             File.Create("users.txt");
+            
         }
         string data=$"{users.Count}\n";
         for(int i=0;i<users.Count;++i)
@@ -186,6 +187,7 @@ class HelloWorld
         if(!File.Exists("users.txt"))
         {
             myWays=generateWays();
+            saveWays();
             return;
         }
         myWays=new List<Way>();
