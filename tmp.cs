@@ -150,7 +150,7 @@ class HelloWorld
         {
             File.Create("ways.txt");
         }
-        string data=$"{myWays}\n";
+        string data=$"{myWays.Count}\n";
         for(int wayID=0;wayID<myWays.Count;++wayID)
         {
             data+=$"{myWays[wayID].names.Count}";
