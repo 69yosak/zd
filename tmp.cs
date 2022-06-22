@@ -457,7 +457,7 @@ class HelloWorld
         for (int wayID = 0; wayID < myWays.Count; ++wayID)
         {
             Console.WriteLine("");
-            Console.WriteLine($"Маршрут№ {wayID + 1}");
+            Console.WriteLine($"Маршрут №{wayID + 1}");
 
             for (int i = 0; i < myWays[wayID].names.Count; ++i)
             {
