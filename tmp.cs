@@ -425,6 +425,8 @@ class HelloWorld
             
         }
         myWays.Add(newWay);
+
+        saveWays();
     }
     static void adminEraseWay()
     {
