@@ -462,7 +462,7 @@ class HelloWorld
 
     public static string TicketToString(List<string>ticket)
     {
-        return ticket[1] + "," + typeSeats[int.Parse(ticket[4])] + "," + ticket[5] + "," + ticket[2] + "," + ticket[3];
+        return "," + typeSeats[int.Parse(ticket[4])] + "," + ticket[5] + "," + ticket[2] + "," + ticket[3];
     }
 
     public static void doLikeCLient()
@@ -704,6 +704,13 @@ class HelloWorld
         Console.WriteLine("Введите номер маршрута");
 
         int wayId = inputInt() - 1;
+
+        if(wayId < 0 || wayId>=myWays.Count)
+        {
+            Console.WriteLine("Не правильный номер маршрута");
+            return;
+        }
+
         Console.WriteLine("Выберите станцию отправления:");
         printWay(myWays[wayId]);
         int wayPoint1 = inputInt() - 1;
@@ -829,7 +836,7 @@ class HelloWorld
                     myWays[wayId].places[j][typeSeats[tmpTypeSeat]][seatNum] = name + " " + surname;
                     priceTrip += (float)(myWays[wayId].prices[j + 1] * Math.Pow(1.5, tmpTypeSeat));
                 }
-                tickets.Add(generateTicket(wayId, login, name, surname, tmpTypeSeat, $"{wayPoint1+1}-{tmpWayPoint+1}"));
+                tickets.Add(generateTicket(wayId, login, name, surname, tmpTypeSeat, $"{wayPoint1+1}-{tmpWayPoint+1}(Места)"));
                 saveTickets();
 
             }
@@ -855,14 +862,13 @@ class HelloWorld
                     myWays[wayId].places[j][typeSeats[typeSeat]][seatNum] = name + " " + surname;
                     priceTrip += (float)(myWays[wayId].prices[j + 1] * Math.Pow(1.5, typeSeat));
                 }
-                tickets.Add(generateTicket(wayId, login, name, surname, typeSeat, $"{tmpWayPoint+1}-{wayPoint2+1}"));
+                tickets.Add(generateTicket(wayId, login, name, surname, typeSeat, $"{tmpWayPoint+1}-{wayPoint2+1}(Места)"));
                 saveTickets();
 
             }
         }
         else
         {
-            Console.WriteLine("here");
             for (int i = 0; i < countPlaces; ++i)
             {
             
@@ -884,7 +890,7 @@ class HelloWorld
                     myWays[wayId].places[j][typeSeats[typeSeat]][seatNum] = name + " " + surname;
                     priceTrip += (float)(myWays[wayId].prices[j + 1] * Math.Pow(1.5, typeSeat));
                 }
-                tickets.Add(generateTicket(wayId, login, name, surname, typeSeat, $"{wayPoint1+1}-{wayPoint2+1}"));
+                tickets.Add(generateTicket(wayId, login, name, surname, typeSeat, $"{wayPoint1+1}-{wayPoint2+1}(Места)"));
                 saveTickets();
             }
             
