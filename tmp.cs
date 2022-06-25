@@ -462,7 +462,7 @@ class HelloWorld
 
     public static string TicketToString(List<string>ticket)
     {
-        return typeSeats[int.Parse(ticket[4])] + "," + ticket[5] + " (Места)," + ticket[2] + "," + ticket[3];
+        return typeSeats[int.Parse(ticket[4])] + "," + "Места: " + ticket[5]+ "," + ticket[2] + "," + ticket[3];
     }
 
     public static void doLikeCLient()
