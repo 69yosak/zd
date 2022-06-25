@@ -21,9 +21,9 @@ public class Way
 }
 public class User
 {
-    public string login="";
-    public string password="";
-    public float balance=0;
+    public string login = "";
+    public string password = "";
+    public float balance = 0;
     public string toString()
     {
         return $"{login}\n{password}\n{balance}";
@@ -67,36 +67,36 @@ class HelloWorld
     }
     public static void saveUsers()
     {
-        if(!File.Exists("users.txt"))
+        if (!File.Exists("users.txt"))
         {
             File.Create("users.txt");
-            
+
         }
-        string data=$"{users.Count}\n";
-        for(int i=0;i<users.Count;++i)
+        string data = $"{users.Count}\n";
+        for (int i = 0; i < users.Count; ++i)
         {
-            data+=($"{users[i].toString()}\n");
+            data += ($"{users[i].toString()}\n");
         }
-        File.WriteAllText("users.txt",data);
+        File.WriteAllText("users.txt", data);
     }
     public static void loadUsers()
     {
-        users=new List<User>();
-        if(!File.Exists("users.txt"))
+        users = new List<User>();
+        if (!File.Exists("users.txt"))
         {
             return;
         }
-        string[] lines=File.ReadAllText("users.txt").Split('\n');
-        int index=1;
-        int Count=lines.Length-1;
-        while(index<Count)
+        string[] lines = File.ReadAllText("users.txt").Split('\n');
+        int index = 1;
+        int Count = lines.Length - 1;
+        while (index < Count)
         {
             User newUser = new User();
-            newUser.login=lines[index+0];
-            newUser.password=lines[index+1];
-            newUser.balance=float.Parse(lines[index+2]);
+            newUser.login = lines[index + 0];
+            newUser.password = lines[index + 1];
+            newUser.balance = float.Parse(lines[index + 2]);
             users.Add(newUser);
-            index+=3;
+            index += 3;
         }
     }
     static List<Way> generateWays()
@@ -146,90 +146,92 @@ class HelloWorld
         // void addWaypoint(string name,int time,int price,Dictionary<string,List<string>>place)
     }
     public static void createFile(string name)
-    { if(!File.Exists("ways.txt"))
+    {
+        if (!File.Exists("ways.txt"))
         {
-        
-        File.Create(name);}
+
+            File.Create(name);
+        }
     }
     public static void saveWays()
     {
-       
 
-            createFile("ways.txt");
-        
-        string data=$"{myWays.Count}\n";
-        for(int wayID=0;wayID<myWays.Count;++wayID)
+
+        createFile("ways.txt");
+
+        string data = $"{myWays.Count}\n";
+        for (int wayID = 0; wayID < myWays.Count; ++wayID)
         {
-            data+=$"{myWays[wayID].names.Count}\n";
-            foreach(string name in myWays[wayID].names)
+            data += $"{myWays[wayID].names.Count}\n";
+            foreach (string name in myWays[wayID].names)
             {
-                data+=name+"\n";
+                data += name + "\n";
             }
-            foreach(int price in myWays[wayID].prices)
+            foreach (int price in myWays[wayID].prices)
             {
-                data+=$"{price}\n";
+                data += $"{price}\n";
             }
-            foreach(int time in myWays[wayID].times)
+            foreach (int time in myWays[wayID].times)
             {
-                data+=$"{time}\n";
+                data += $"{time}\n";
             }
-            for (int tmp=0;tmp<myWays[wayID].places.Count;++tmp)
+            for (int tmp = 0; tmp < myWays[wayID].places.Count; ++tmp)
             {
-                foreach(string typeSeat in typeSeats)
+                foreach (string typeSeat in typeSeats)
                 {
-                    data+=$"{myWays[wayID].places[tmp][typeSeat].Count}\n";
-                    foreach(string place in myWays[wayID].places[tmp][typeSeat])
+                    data += $"{myWays[wayID].places[tmp][typeSeat].Count}\n";
+                    foreach (string place in myWays[wayID].places[tmp][typeSeat])
                     {
-                        data+=$"{place}\n";
+                        data += $"{place}\n";
                     }
                 }
             }
 
-        File.WriteAllText("ways.txt",data);
+            File.WriteAllText("ways.txt", data);
         }
     }
     public static void loadWays()
     {
-        if(!File.Exists("ways.txt"))
+        if (!File.Exists("ways.txt"))
         {
-            myWays=generateWays();
+            myWays = generateWays();
             saveWays();
             return;
         }
-        myWays=new List<Way>();
-        string[] lines=File.ReadAllText("ways.txt").Split('\n');
-        int countWays=int.Parse(lines[0]);
-        int index=1;
-        for(int numWay=0;numWay<countWays;++numWay)
+        myWays = new List<Way>();
+        string[] lines = File.ReadAllText("ways.txt").Split('\n');
+        int countWays = int.Parse(lines[0]);
+        int index = 1;
+        for (int numWay = 0; numWay < countWays; ++numWay)
         {
-            Way newWay=new Way();
-            int CountWayPoints=int.Parse(lines[index]);index++;
-            for(int i=0;i<CountWayPoints;++i)
+            Way newWay = new Way();
+            int CountWayPoints = int.Parse(lines[index]); index++;
+            for (int i = 0; i < CountWayPoints; ++i)
             {
-                newWay.names.Add(lines[index]);index++;
+                newWay.names.Add(lines[index]); index++;
             }
-            for(int i=0;i<CountWayPoints;++i)
+            for (int i = 0; i < CountWayPoints; ++i)
             {
-                newWay.prices.Add(int.Parse(lines[index]));index++;
+                newWay.prices.Add(int.Parse(lines[index])); index++;
             }
-            for(int i=0;i<CountWayPoints;++i)
+            for (int i = 0; i < CountWayPoints; ++i)
             {
-                newWay.times.Add(int.Parse(lines[index]));index++;
+                newWay.times.Add(int.Parse(lines[index])); index++;
             }
-            
 
-            for(int i=0;i<CountWayPoints;++i)
+
+            for (int i = 0; i < CountWayPoints; ++i)
             {
-                Dictionary<string,List<string>> tmpPlace = new Dictionary<string, List<string>>();
-                foreach(string typeSeat in typeSeats)
+                Dictionary<string, List<string>> tmpPlace = new Dictionary<string, List<string>>();
+                foreach (string typeSeat in typeSeats)
                 {
-                    int Count = int.Parse(lines[index]);index++;
-                    List<string> tmpList=new List<string>();
-                    for(int j =0;j<Count;++j)
+                    int Count = int.Parse(lines[index]); index++;
+                    List<string> tmpList = new List<string>();
+                    for (int j = 0; j < Count; ++j)
                     {
-                        tmpList.Add(lines[index]);index++;
+                        tmpList.Add(lines[index]); index++;
                     }
-                    tmpPlace.Add(typeSeat,tmpList);
+                    tmpPlace.Add(typeSeat, tmpList);
                 }
                 newWay.places.Add(tmpPlace);
             }
@@ -238,8 +240,10 @@ class HelloWorld
     }
     static void Main()
     {   
+//        myWays=generateWays(); 
 
-
+//        saveWays();
+//        return;
         loadUsers();
         loadWays();
         //showWays();
@@ -253,7 +257,7 @@ class HelloWorld
                 case "1":
                     {
                         Console.WriteLine("Введите пароль админитратора(12345)");
-                        if (Console.ReadLine() == "12345") while( doLikeAdmin()){};
+                        if (Console.ReadLine() == "12345") while (doLikeAdmin()) { };
                         break;
                     }
                 case "2":
@@ -320,7 +324,7 @@ class HelloWorld
     {
         foreach (User user in users)
         {
-            if(user.login == login)
+            if (user.login == login)
             {
                 return true;
             }
@@ -329,9 +333,9 @@ class HelloWorld
     }
     public static bool clientCheckRegister(string login, string password)
     {
-        foreach(User user in users)
+        foreach (User user in users)
         {
-            if(user.login==login && user.password==password)
+            if (user.login == login && user.password == password)
             {
                 return true;
             }
@@ -344,63 +348,63 @@ class HelloWorld
         Console.WriteLine("Выберите тип авторизации");
         Console.WriteLine("1)Регистрация");
         Console.WriteLine("2)Вход");
-        switch(Console.ReadLine())
+        switch (Console.ReadLine())
         {
             case "1":
-            {
-                User newUser = new User();
-                Console.WriteLine("Введите логин");
-                
-                while(true)
                 {
-                    newUser.login=Console.ReadLine();
-                    if (checkLogin(newUser.login))
-                    {
-                        Console.WriteLine("Логин уже занят");
-                        Console.WriteLine("Введите логин");
-                    }
-                    else
-                    {
-                        
-                        Console.WriteLine("Введите пароль");
-                        newUser.password=Console.ReadLine();
-                        users.Add(newUser);
+                    User newUser = new User();
+                    Console.WriteLine("Введите логин");
 
-                        Console.WriteLine("Успешная регистрация");
-                        saveUsers();
-                        return newUser.login;
+                    while (true)
+                    {
+                        newUser.login = Console.ReadLine();
+                        if (checkLogin(newUser.login))
+                        {
+                            Console.WriteLine("Логин уже занят");
+                            Console.WriteLine("Введите логин");
+                        }
+                        else
+                        {
+
+                            Console.WriteLine("Введите пароль");
+                            newUser.password = Console.ReadLine();
+                            users.Add(newUser);
+
+                            Console.WriteLine("Успешная регистрация");
+                            saveUsers();
+                            return newUser.login;
+                        }
                     }
+
                 }
-
-            }
             case "2":
-            {
-                
-                Console.WriteLine("Введите логин");
-                string name=Console.ReadLine();
-                Console.WriteLine("Введите пароль");
-                string password=Console.ReadLine();
-                if(clientCheckRegister(name,password))
                 {
-                    return name;
+
+                    Console.WriteLine("Введите логин");
+                    string name = Console.ReadLine();
+                    Console.WriteLine("Введите пароль");
+                    string password = Console.ReadLine();
+                    if (clientCheckRegister(name, password))
+                    {
+                        return name;
+                    }
+                    else return "";
                 }
-                else return "";
-            }
             default:
-            {
-                return "";
-            }
+                {
+                    return "";
+                }
         }
     }
     public static void doLikeCLient()
     {
-        string login=ClientRegistr();
-        if(login=="")
+        string login = ClientRegistr();
+        if (login == "")
         {
             return;
         }
         Console.WriteLine("вы залогинились как Клиент");
-        while(true)
+        while (true)
         {
             printClientMenu();
             switch (Console.ReadLine())
@@ -415,16 +419,16 @@ class HelloWorld
                         buyTicket(login);
                         break;
                     }
-                    case "4":
-                {
-                    Console.WriteLine("Личный кабинет в разработке");
-                    break;
-                }
+                case "4":
+                    {
+                        Console.WriteLine("Личный кабинет в разработке");
+                        break;
+                    }
                 case "3":
-                {
-                    return;
-                    break;
-                }
+                    {
+                        return;
+                        break;
+                    }
                 default:
                     {
                         return;
@@ -438,27 +442,27 @@ class HelloWorld
     {
         Way newWay = new Way();
         Console.WriteLine("Введите количество станций");
-        int CountWayPoints=int.Parse(Console.ReadLine());
-        if(CountWayPoints<2){Console.WriteLine("Неправильное количество станций. Должно быть >1");return;}
+        int CountWayPoints = int.Parse(Console.ReadLine());
+        if (CountWayPoints < 2) { Console.WriteLine("Неправильное количество станций. Должно быть >1"); return; }
         Console.WriteLine("Введите количество сидячих мест");
-        int CountSeatsSeats=int.Parse(Console.ReadLine());
+        int CountSeatsSeats = int.Parse(Console.ReadLine());
         Console.WriteLine("Введите количество плацкарт-мест");
-        int CountPlatsSeats=int.Parse(Console.ReadLine());
+        int CountPlatsSeats = int.Parse(Console.ReadLine());
         Console.WriteLine("Введите количество купе-мест");
-        int CountCoupeSeats=int.Parse(Console.ReadLine());
+        int CountCoupeSeats = int.Parse(Console.ReadLine());
         Console.WriteLine("Введите количество люкс-мест");
-        int CountLuxeSeats=int.Parse(Console.ReadLine());
-        for (int i=0;i<CountWayPoints;++i)
+        int CountLuxeSeats = int.Parse(Console.ReadLine());
+        for (int i = 0; i < CountWayPoints; ++i)
         {
             Console.WriteLine("Введите название станции");
             string name = Console.ReadLine();
             Console.WriteLine("Введите стоимость билета до следующей станции");
-            int price=int.Parse(Console.ReadLine());
+            int price = int.Parse(Console.ReadLine());
             Console.WriteLine("Введите длительность пути (в минутах) от предыдущей станции");
-            int time=int.Parse(Console.ReadLine());
-            newWay.addWaypoint(name,time,price,generatePlace(CountSeatsSeats,CountPlatsSeats,CountCoupeSeats,CountLuxeSeats));
+            int time = int.Parse(Console.ReadLine());
+            newWay.addWaypoint(name, time, price, generatePlace(CountSeatsSeats, CountPlatsSeats, CountCoupeSeats, CountLuxeSeats));
 
-            
+
         }
         myWays.Add(newWay);
 
@@ -468,9 +472,9 @@ class HelloWorld
     {
         showWays();
         Console.WriteLine("Введите номер маршрута для удаления или -1 для выхода");
-        int wayID = int.Parse(Console.ReadLine())-1;
-        Console.WriteLine($"Вы Написали {wayID+1}");
-        if(wayID<0||wayID>=myWays.Count)
+        int wayID = int.Parse(Console.ReadLine()) - 1;
+        Console.WriteLine($"Вы Написали {wayID + 1}");
+        if (wayID < 0 || wayID >= myWays.Count)
         {
             Console.WriteLine($"Не правильный номер маршрута{1}-{myWays.Count}");
             Console.WriteLine();
@@ -501,25 +505,25 @@ class HelloWorld
             Console.WriteLine($"{i + 1}: {way.names[i]}");
         }
     }
-    static void printPlaces(Way way,int typeSeat, int i0, int i1)
+    static void printPlaces(Way way, int typeSeat, int i0, int i1)
     {
-        List <string> MainList=new List<string>();
-        for (int i=i0;i<i1;++i)
+        List<string> MainList = new List<string>();
+        for (int i = i0; i < i1; ++i)
         {
-            List<string>places=way.places[i][typeSeats[typeSeat]];
-            for(int j=0;j<places.Count;++j)
+            List<string> places = way.places[i][typeSeats[typeSeat]];
+            for (int j = 0; j < places.Count; ++j)
             {
-                if(MainList.Count<places.Count)
+                if (MainList.Count < places.Count)
                 {
                     MainList.Add("+");
                 }
-                if(places[j]!="")
+                if (places[j] != "")
                 {
-                    MainList[j]="-";
+                    MainList[j] = "-";
                 }
             }
         }
-        for(int i=0;i<MainList.Count;++i)
+        for (int i = 0; i < MainList.Count; ++i)
         {
             Console.Write(MainList[i] == "+" ? (i + 1 > 9 ? ($"{i + 1}") : ($" {i + 1}")) : "  ");
             Console.Write(" ");
@@ -527,66 +531,66 @@ class HelloWorld
         Console.Write("\n");
 
     }
-    static int countPlacesMayBuy(Way way,int typeSeat, int i0, int i1)
+    static int countPlacesMayBuy(Way way, int typeSeat, int i0, int i1)
     {
-        int answer=0;
-        int countSeats=way.places[0][typeSeats[typeSeat]].Count;
-        for(int i=0;i<countSeats;++i)
+        int answer = 0;
+        int countSeats = way.places[0][typeSeats[typeSeat]].Count;
+        for (int i = 0; i < countSeats; ++i)
         {
-            answer+= checkPlaces(way,typeSeat, i0,i1,i) ? 1 : 0 ;
+            answer += checkPlaces(way, typeSeat, i0, i1, i) ? 1 : 0;
         }
         return answer;
     }
-    static bool checkPlaces(Way way,int typeSeat, int i0, int i1,int numSeat)
+    static bool checkPlaces(Way way, int typeSeat, int i0, int i1, int numSeat)
     {
-        List <string> MainList=new List<string>();
-        for (int i=i0;i<i1;++i)
+        List<string> MainList = new List<string>();
+        for (int i = i0; i < i1; ++i)
         {
-            List<string>places=way.places[i][typeSeats[typeSeat]];
-            for(int j=0;j<places.Count;++j)
+            List<string> places = way.places[i][typeSeats[typeSeat]];
+            for (int j = 0; j < places.Count; ++j)
             {
-                if(MainList.Count<places.Count)
+                if (MainList.Count < places.Count)
                 {
                     MainList.Add("+");
                 }
-                if(places[j]!="")
+                if (places[j] != "")
                 {
-                    MainList[j]="-";
+                    MainList[j] = "-";
                 }
             }
         }
-        return (MainList[numSeat]=="+");
+        return (MainList[numSeat] == "+");
 
     }
-    static void giveCashBack(string login,float summ)
+    static void giveCashBack(string login, float summ)
     {
-        foreach(User user in users)
+        foreach (User user in users)
         {
-            if(user.login==login)
+            if (user.login == login)
             {
-                user.balance+=summ;
+                user.balance += summ;
             }
         }
     }
     static float getCashBack(string login)
     {
-        float answer=0;
-        foreach(User user in users)
+        float answer = 0;
+        foreach (User user in users)
         {
-            if(user.login==login)
+            if (user.login == login)
             {
-                answer=user.balance;
+                answer = user.balance;
             }
         }
         return answer;
     }
-    static void setCashBack(string login,float summ)
+    static void setCashBack(string login, float summ)
     {
-        foreach(User user in users)
+        foreach (User user in users)
         {
-            if(user.login==login)
+            if (user.login == login)
             {
-                user.balance=summ;
+                user.balance = summ;
             }
         }
     }
@@ -620,75 +624,88 @@ class HelloWorld
             return;
         }
         Console.WriteLine("Введите тип мест");
-        for(int i=0;i<typeSeats.Count;++i)
+        for (int i = 0; i < typeSeats.Count; ++i)
         {
-            Console.WriteLine($"{i+1}) {typeSeats[i]}(Свободно: {countPlacesMayBuy(myWays[wayId],i,wayPoint1,wayPoint2)})");
+            Console.WriteLine($"{i + 1}) {typeSeats[i]}(Свободно: {countPlacesMayBuy(myWays[wayId], i, wayPoint1, wayPoint2)})");
         }
-        int typeSeat=int.Parse(Console.ReadLine())-1;
-        if(typeSeat<0 || typeSeat >= typeSeats.Count)
+
+        int typeSeat = int.Parse(Console.ReadLine()) - 1;
+        Console.WriteLine("Введите количество билетов");
+        int countPlaces = int.Parse(Console.ReadLine());
+       
+        
+        if (typeSeat < 0 || typeSeat >= typeSeats.Count)
         {
             Console.WriteLine("Неправильный тип мест");
             return;
         }
-        if(countPlacesMayBuy(myWays[wayId],typeSeat,wayPoint1,wayPoint2)==0)
+
+        if (countPlacesMayBuy(myWays[wayId], typeSeat, wayPoint1, wayPoint2) <countPlaces)
         {
-            bool cond=false;
-            int tmpWayPoint=-1;
-            for(tmpWayPoint=wayPoint1+1;tmpWayPoint<wayPoint2;++tmpWayPoint)
+            bool cond = false;
+            int tmpWayPoint = -1;
+            int tmpTypeSeat = -1;
+            for (tmpWayPoint = wayPoint1 + 1; tmpWayPoint < wayPoint2; ++tmpWayPoint)
             {
-                if(countPlacesMayBuy(myWays[wayId],typeSeat,wayPoint1,wayPoint2)!=0)
+                if (countPlacesMayBuy(myWays[wayId], typeSeat, tmpWayPoint, wayPoint2) >= countPlaces)
                 {
-                    cond=true;
+                    for (tmpTypeSeat = typeSeat-1; tmpTypeSeat >=0 ; --tmpTypeSeat)
+                    {
+                        if(countPlacesMayBuy(myWays[wayId],tmpTypeSeat,wayPoint1, tmpWayPoint) >=countPlaces)
+                        {
+                            cond= true;
+                            break;
+                        }
+                    }
+                    if (cond) break;
                 }
             }
-            if(cond)
+            if (cond)
             {
                 Console.WriteLine("Есть Альтернатива");
                 Console.WriteLine("1)Посмотреть");
                 Console.WriteLine("2)Не интересно");
 
-                switch(Console.ReadLine())
+                switch (Console.ReadLine())
                 {
                     case "1":
-                    {
-                        break;
-
-                    }
+                        {
+                            Console.WriteLine($"{myWays[wayId].names[wayPoint1]}-{myWays[wayId].names[tmpWayPoint]} ({typeSeats[tmpTypeSeat]})\n{myWays[wayId].names[tmpWayPoint]}-{myWays[wayId].names[wayPoint2]} ({typeSeats[typeSeat]})");
+                            break;
+                        }
                     default:
-                    {
-                        Console.WriteLine("Хорошо");
-                        break;
-                    }
+                        {
+                            Console.WriteLine("Хорошо");
+                            break;
+                        }
                 }
             }
         }
-        Console.WriteLine("Введите количество билетов");
-        int countPlaces = int.Parse(Console.ReadLine());
-        if(countPlacesMayBuy(myWays[wayId],typeSeat,wayPoint1,wayPoint2)<countPlaces)
+        if (countPlacesMayBuy(myWays[wayId], typeSeat, wayPoint1, wayPoint2) < countPlaces)
         {
             Console.WriteLine("Столько мест нет");
             return;
         }
-        float priceTrip=0;
-        for(int i=0;i<countPlaces;++i)
+        float priceTrip = 0;
+        for (int i = 0; i < countPlaces; ++i)
         {
             Console.WriteLine("Выбирете место");
-            printPlaces(myWays[wayId], typeSeat ,wayPoint1, wayPoint2);
-            int seatNum=int.Parse(Console.ReadLine())-1;
-            if(!checkPlaces(myWays[wayId], typeSeat ,wayPoint1, wayPoint2,seatNum))
+            printPlaces(myWays[wayId], typeSeat, wayPoint1, wayPoint2);
+            int seatNum = int.Parse(Console.ReadLine()) - 1;
+            if (!checkPlaces(myWays[wayId], typeSeat, wayPoint1, wayPoint2, seatNum))
             {
                 Console.WriteLine("Не правильное место");
                 --i;
                 continue;
             }
             Console.WriteLine("Введите имя пассажира");
-            string name=Console.ReadLine();
+            string name = Console.ReadLine();
             Console.WriteLine("Введите фамилию пассажира");
-            string surname=Console.ReadLine();
-            for(int j=wayPoint1;j<wayPoint2;++j)
+            string surname = Console.ReadLine();
+            for (int j = wayPoint1; j < wayPoint2; ++j)
             {
-                myWays[wayId].places[j][typeSeats[typeSeat]][seatNum]=name+" "+surname;
-                priceTrip+=myWays[wayId].prices[j+1];
+                myWays[wayId].places[j][typeSeats[typeSeat]][seatNum] = name + " " + surname;
+                priceTrip +=(float)( myWays[wayId].prices[j + 1]*Math.Pow(1.5,typeSeat));
             }
             //Console.WriteLine($"");
         }
@@ -696,86 +713,86 @@ class HelloWorld
         Console.WriteLine("1)Да");
         Console.WriteLine("2)Нет");
 
-        switch(Console.ReadLine())
+        switch (Console.ReadLine())
         {
             case "1":
-            {
-                Console.WriteLine("Хотите ли вы заказать питание?");
-                Console.WriteLine("1)Да");
-                Console.WriteLine("2)Нет");
-                switch(Console.ReadLine())
                 {
-                    case "1":
-                    {
-                        priceTrip+=2000;
-                        Console.WriteLine("Еда заказана");
-                        break;
-                    }
-                    default:
-                    {
-                        Console.WriteLine("Хорошо");
-                        break;
-                    }
-                }
-                Console.WriteLine("Хотите ли вы заказать трансфер до вокзала?");
-                Console.WriteLine("1)Да");
-                Console.WriteLine("2)Нет");
-                switch(Console.ReadLine())
-                {
-                    case "1":
-                    {
-                        priceTrip+=3000;
-                        Console.WriteLine("Трансфер заказан");
-                        break;
-                    }
-                    default:
-                    {
-                        Console.WriteLine("Хорошо");
-                        break;
-                    }
-                }
-                
-                
-                break;
-            }
-            default:
-            {
-                Console.WriteLine("хорошо");
-                break;
-            }
-            
-        }
-
-        float cashBack=getCashBack(login);
-                if(cashBack>0)
-                {
-                    Console.WriteLine($"У вас есть {cashBack} баллов. Списать?");
+                    Console.WriteLine("Хотите ли вы заказать питание?");
                     Console.WriteLine("1)Да");
                     Console.WriteLine("2)Нет");
-
-                    switch(Console.ReadLine())
+                    switch (Console.ReadLine())
                     {
                         case "1":
-                        {
-                            if(cashBack < priceTrip)
                             {
-                                cashBack=0;
-                                priceTrip-=cashBack;
+                                priceTrip += 2000;
+                                Console.WriteLine("Еда заказана");
+                                break;
                             }
-                            else
+                        default:
                             {
-                                cashBack-=priceTrip;
-                                priceTrip=0;
+                                Console.WriteLine("Хорошо");
+                                break;
                             }
-                            break;
-                        }
                     }
+                    Console.WriteLine("Хотите ли вы заказать трансфер до вокзала?");
+                    Console.WriteLine("1)Да");
+                    Console.WriteLine("2)Нет");
+                    switch (Console.ReadLine())
+                    {
+                        case "1":
+                            {
+                                priceTrip += 3000;
+                                Console.WriteLine("Трансфер заказан");
+                                break;
+                            }
+                        default:
+                            {
+                                Console.WriteLine("Хорошо");
+                                break;
+                            }
+                    }
+
+
+                    break;
                 }
-                setCashBack(login,cashBack);
-                giveCashBack(login,priceTrip*(float)0.1);
-                Console.WriteLine($"Вы потратили {priceTrip} рублей, у вас есть {getCashBack(login)} баллов");
-                saveUsers();
-                saveWays();
+            default:
+                {
+                    Console.WriteLine("хорошо");
+                    break;
+                }
+
+        }
+
+        float cashBack = getCashBack(login);
+        if (cashBack > 0)
+        {
+            Console.WriteLine($"У вас есть {cashBack} баллов. Списать?");
+            Console.WriteLine("1)Да");
+            Console.WriteLine("2)Нет");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    {
+                        if (cashBack < priceTrip)
+                        {
+                            cashBack = 0;
+                            priceTrip -= cashBack;
+                        }
+                        else
+                        {
+                            cashBack -= priceTrip;
+                            priceTrip = 0;
+                        }
+                        break;
+                    }
+            }
+        }
+        setCashBack(login, cashBack);
+        giveCashBack(login, priceTrip * (float)0.1);
+        Console.WriteLine($"Вы потратили {priceTrip} рублей, у вас есть {getCashBack(login)} баллов");
+        saveUsers();
+        saveWays();
 
     }
 
