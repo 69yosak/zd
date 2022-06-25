@@ -344,6 +344,8 @@ class HelloWorld
     }
     public static bool doLikeAdmin()
     {
+
+        Console.Clear();
         Console.WriteLine("вы вошли как Админ");
         printAminMenu();
         switch (Console.ReadLine())
@@ -474,6 +476,7 @@ class HelloWorld
         {
             return;
         }
+        Console.Clear();
         Console.WriteLine("вы залогинились как Клиент");
         while (true)
         {
