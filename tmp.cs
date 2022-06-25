@@ -505,6 +505,10 @@ class HelloWorld
                             data += TicketToString(ticket) + "\n";
                         }
                         Console.Write(data);
+                        if(list.Count == 0)
+                        {
+                            Console.WriteLine("У вас нет билетов");
+                        }
                         break;
                     }
                 case "4":
