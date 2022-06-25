@@ -311,18 +311,20 @@ class HelloWorld
                     }
                 case "2":
                     {
+                        Console.Clear();
                         doLikeCLient();
                         break;
                     }
                 default:
                     {
+                        Console.Clear();
                         Console.WriteLine("не понял");
                         break;
                     }
 
 
             }
-            // Console.Clear();
+            Console.Clear();
         }
 
     }
