@@ -515,6 +515,9 @@ class HelloWorld
                         {
                             Console.WriteLine("У вас нет билетов");
                         }
+                        Console.WriteLine("Напишите что угодно");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
                     }
                 case "4":
@@ -1018,7 +1021,6 @@ class HelloWorld
         Console.WriteLine($"Вы потратили {priceTrip} рублей, у вас есть {getCashBack(login)} баллов");
         saveUsers();
         saveWays();
-        Console.WriteLine("Столько мест нет");
         Console.WriteLine("Введите что угодно");
         Console.ReadLine();
         Console.Clear();
