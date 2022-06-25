@@ -336,6 +336,7 @@ class HelloWorld
     }
     public static void printClientMenu()
     {
+        Console.Clear();
         Console.WriteLine("1)Посмотреть маршруты");
         Console.WriteLine("2)Купить билет(ы)");
         Console.WriteLine("3)Посмотреть мои билеты");
@@ -709,10 +710,12 @@ class HelloWorld
         Console.WriteLine("Введите номер маршрута");
 
         int wayId = inputInt() - 1;
-
         if(wayId < 0 || wayId>=myWays.Count)
         {
             Console.WriteLine("Не правильный номер маршрута");
+            Console.WriteLine("Введите что угодно");
+            Console.ReadLine();
+            Console.Clear();
             return;
         }
 
@@ -722,6 +725,9 @@ class HelloWorld
         if (wayPoint1 < 0 || wayPoint1 > myWays[wayId].names.Count)
         {
             Console.WriteLine("Нет такой станции");
+            Console.WriteLine("Введите что угодно");
+            Console.ReadLine();
+            Console.Clear();
             return;
         }
         Console.WriteLine("Выберите станцию прибытия:");
@@ -732,11 +738,17 @@ class HelloWorld
         if (wayPoint1 < 0 || wayPoint1 > myWays[wayId].names.Count)
         {
             Console.WriteLine("Нет такой станции");
+            Console.WriteLine("Введите что угодно");
+            Console.ReadLine();
+            Console.Clear();
             return;
         }
         if (wayPoint2 <= wayPoint1)
         {
             Console.WriteLine("Не правильное направление движения. Посмотрите обратный маршрут");
+            Console.WriteLine("Введите что угодно");
+            Console.ReadLine();
+            Console.Clear();
             return;
         }
         Console.WriteLine("Введите тип мест");
@@ -753,6 +765,9 @@ class HelloWorld
         if (typeSeat < 0 || typeSeat >= typeSeats.Count)
         {
             Console.WriteLine("Неправильный тип мест");
+            Console.WriteLine("Введите что угодно");
+            Console.ReadLine();
+            Console.Clear();
             return;
         }
         bool cond = false;
@@ -796,6 +811,9 @@ class HelloWorld
                                 if (countPlacesMayBuy(myWays[wayId], typeSeat, wayPoint1, wayPoint2) < countPlaces)
                                 {
                                     Console.WriteLine("Столько мест нет");
+                                    Console.WriteLine("Введите что угодно");
+                                    Console.ReadLine();
+                                    Console.Clear();
                                     return;
                                 }
                             }
@@ -808,6 +826,9 @@ class HelloWorld
                             if (countPlacesMayBuy(myWays[wayId], typeSeat, wayPoint1, wayPoint2) < countPlaces)
                             {
                                 Console.WriteLine("Столько мест нет");
+                                Console.WriteLine("Введите что угодно");
+                                Console.ReadLine();
+                                Console.Clear();
                                 return;
                             }
                             break;
