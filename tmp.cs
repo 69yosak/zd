@@ -718,6 +718,7 @@ class HelloWorld
             Console.Clear();
             return;
         }
+        Console.Clear();
 
         Console.WriteLine("Выберите станцию отправления:");
         printWay(myWays[wayId]);
@@ -730,8 +731,9 @@ class HelloWorld
             Console.Clear();
             return;
         }
+        Console.Clear();
         Console.WriteLine("Выберите станцию прибытия:");
-        printWay(myWays[wayId], wayPoint1);
+        printWay(myWays[wayId], wayPoint1+1);
 
         int wayPoint2 = inputInt() - 1;
 
@@ -751,6 +753,7 @@ class HelloWorld
             Console.Clear();
             return;
         }
+        Console.Clear();
         Console.WriteLine("Введите тип мест");
         for (int i = 0; i < typeSeats.Count; ++i)
         {
@@ -770,6 +773,7 @@ class HelloWorld
             Console.Clear();
             return;
         }
+        Console.Clear();
         bool cond = false;
         int tmpWayPoint = -1;
         int tmpTypeSeat = -1;
@@ -864,8 +868,10 @@ class HelloWorld
                 }
                 tickets.Add(generateTicket(wayId, login, name, surname, tmpTypeSeat, $"{wayPoint1+1}-{tmpWayPoint+1}"));
                 saveTickets();
+                Console.Clear();
 
             }
+            Console.Clear();
             Console.WriteLine($"Теперь выбираем места типа {typeSeats[typeSeat]}");
             for (int i = 0; i < countPlaces; ++i)
             {
@@ -890,6 +896,8 @@ class HelloWorld
                 }
                 tickets.Add(generateTicket(wayId, login, name, surname, typeSeat, $"{tmpWayPoint+1}-{wayPoint2+1}"));
                 saveTickets();
+
+                Console.Clear();
 
             }
         }
@@ -918,10 +926,12 @@ class HelloWorld
                 }
                 tickets.Add(generateTicket(wayId, login, name, surname, typeSeat, $"{wayPoint1+1}-{wayPoint2+1}"));
                 saveTickets();
+                Console.Clear();
             }
             
         }
-        
+
+        Console.Clear();
         Console.WriteLine("Хотите ли вы доп. услуги?");
         Console.WriteLine("1)Да");
         Console.WriteLine("2)Нет");
@@ -976,6 +986,7 @@ class HelloWorld
 
         }
 
+        Console.Clear();
         float cashBack = getCashBack(login);
         if (cashBack > 0)
         {
@@ -1007,6 +1018,10 @@ class HelloWorld
         Console.WriteLine($"Вы потратили {priceTrip} рублей, у вас есть {getCashBack(login)} баллов");
         saveUsers();
         saveWays();
+        Console.WriteLine("Столько мест нет");
+        Console.WriteLine("Введите что угодно");
+        Console.ReadLine();
+        Console.Clear();
 
     }
 
