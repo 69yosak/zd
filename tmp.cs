@@ -50,7 +50,7 @@ class HelloWorld// Основной класс приложения
             data += ticket[id] + '\n'; id++;//name
             data += ticket[id] + '\n'; id++;//surname
             data += ticket[id] + '\n'; id++;//typeSeat
-            data += ticket[id] + '\n'; id++;//place
+            data += ticket[id] + '\n';      //place
         }
         File.WriteAllText("tickets.txt", data);
 
@@ -127,7 +127,7 @@ class HelloWorld// Основной класс приложения
         while (index < Count)
         {
             User newUser = new User();
-            newUser.login = lines[index + 0];
+            newUser.login = lines[index];
             newUser.password = lines[index + 1];
             newUser.balance = float.Parse(lines[index + 2]);
             users.Add(newUser);
@@ -353,7 +353,6 @@ class HelloWorld// Основной класс приложения
             case "3":
                 {
                     return false;
-                    break;
                 }
             default:
                 {
@@ -450,7 +449,7 @@ class HelloWorld// Основной класс приложения
             name,
             surname,
             $"{typeSeat}",
-           place
+            place
         };
     }
 
